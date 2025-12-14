@@ -131,6 +131,20 @@ function program() {
       });
     });
   }
+  downloadLinkWrapper.addEventListener("click", () => {
+    gsap.to(downloadLinkWrapper, {
+      scale: 0.95,
+      duration: 0.2,
+      ease: "none",
+      onComplete: () => {
+        gsap.to(downloadLinkWrapper, {
+          scale: 1.0,
+          duration: 0.2,
+          ease: "none",
+        });
+      },
+    });
+  });
 
   // MOUSETRACKED IMG
   let mouseClientX = 0;
