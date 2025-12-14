@@ -1811,6 +1811,16 @@ button,
   z-index: -1;
 }
 
+.button-circle {
+  position: absolute;
+  width: 120%;
+  left: -10%;
+  aspect-ratio: 1;
+  background-color: #101010;
+  border-radius: 50%;
+  z-index: -1;
+}
+
 @media (min-width: 769px) {
   #webgl {
     width: 100vw;
