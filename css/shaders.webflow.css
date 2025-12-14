@@ -1,12 +1,4 @@
 @font-face {
-  font-family: Guess Webfont;
-  src: url("../fonts/guess-bold-webfont.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: Switzer Variable;
   src: url("../fonts/Switzer-Variable.ttf") format("truetype");
   font-weight: 100 900;
