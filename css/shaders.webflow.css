@@ -1800,6 +1800,11 @@ button,
 }
 
 /* DERIVA */
+.event-stripe-2,
+.date-h,
+.star-img {
+  opacity: 0;
+}
 
 .canvas-wrapper {
   /* position: fixed; */
