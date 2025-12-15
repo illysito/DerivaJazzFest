@@ -369,7 +369,7 @@
 }
 
 .is--star {
-  font-family: Guess Webfont, Times New Roman, sans-serif;
+  /* font-family: Guess Webfont, Times New Roman, sans-serif; */
   font-size: 0.7em;
   line-height: 1.2em;
 }
