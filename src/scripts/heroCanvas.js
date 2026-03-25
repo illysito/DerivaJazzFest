@@ -1,9 +1,9 @@
-import gsap from 'gsap'
-import * as THREE from 'three'
+import gsap from "gsap";
+import * as THREE from "three";
 
 function canvas() {
   function isMobile() {
-    return window.innerWidth < 768
+    return window.innerWidth < 768;
   }
 
   // ------------------------------- setup
@@ -13,64 +13,64 @@ function canvas() {
   //
   function githubToJsDelivr(permalink) {
     return permalink
-      .replace('github.com', 'cdn.jsdelivr.net/gh')
-      .replace('/blob/', '@')
+      .replace("github.com", "cdn.jsdelivr.net/gh")
+      .replace("/blob/", "@");
   }
 
-  let bg
-  let perlinNoise
+  let bg;
+  let perlinNoise;
   if (isMobile()) {
     bg = githubToJsDelivr(
-      'https://github.com/illysito/shaders/blob/4093d33505b9cb53ce22261ed3988872888160d6/static/derivaWebBGMob.webp'
-    )
+      "https://github.com/illysito/shaders/blob/4093d33505b9cb53ce22261ed3988872888160d6/static/derivaWebBGMob.webp"
+    );
     perlinNoise = githubToJsDelivr(
-      'https://github.com/illysito/shaders/blob/4093d33505b9cb53ce22261ed3988872888160d6/static/PerlinNoiseMob.webp'
-    )
+      "https://github.com/illysito/shaders/blob/4093d33505b9cb53ce22261ed3988872888160d6/static/PerlinNoiseMob.webp"
+    );
   } else {
     bg = githubToJsDelivr(
-      'https://github.com/illysito/shaders/blob/299c70becbde653465762daaa2b91d0799fe0960/static/derivaWebBG.webp'
-    )
+      "https://github.com/illysito/shaders/blob/299c70becbde653465762daaa2b91d0799fe0960/static/derivaWebBG.webp"
+    );
     perlinNoise = githubToJsDelivr(
-      'https://github.com/illysito/shaders/blob/6becd45f875c0fec1fc94ca2f6d8218e60293d7d/static/PerlinNoise.webp'
-    )
+      "https://github.com/illysito/shaders/blob/6becd45f875c0fec1fc94ca2f6d8218e60293d7d/static/PerlinNoise.webp"
+    );
   }
 
   // LUIS
-  let imgLuis
-  let mapLuis
+  let imgLuis;
+  let mapLuis;
   if (isMobile()) {
     imgLuis = githubToJsDelivr(
-      'https://github.com/illysito/shaders/blob/ca314c152e4a738c9492ab6954d1ceb98528570b/static/DerivaMainTextureLuisMobile.jpg'
-    )
+      "https://github.com/illysito/shaders/blob/ca314c152e4a738c9492ab6954d1ceb98528570b/static/DerivaMainTextureLuisMobile.jpg"
+    );
     mapLuis = githubToJsDelivr(
-      'https://github.com/illysito/shaders/blob/ca314c152e4a738c9492ab6954d1ceb98528570b/static/DerivaMainNoiseMapLuisMobile.jpg'
-    )
+      "https://github.com/illysito/shaders/blob/ca314c152e4a738c9492ab6954d1ceb98528570b/static/DerivaMainNoiseMapLuisMobile.jpg"
+    );
   } else {
     imgLuis = githubToJsDelivr(
-      'https://github.com/illysito/shaders/blob/58bafaa70b5b2f17373a59b02927bb24d5432270/static/DerivaMainTextureLuis.jpg'
-    )
+      "https://github.com/illysito/shaders/blob/58bafaa70b5b2f17373a59b02927bb24d5432270/static/DerivaMainTextureLuis.jpg"
+    );
     mapLuis = githubToJsDelivr(
-      'https://github.com/illysito/shaders/blob/017715a2929951855302760deb493a4c41dce542/static/DerivaMainNoiseMapLuis.jpg'
-    )
+      "https://github.com/illysito/shaders/blob/017715a2929951855302760deb493a4c41dce542/static/DerivaMainNoiseMapLuis.jpg"
+    );
   }
 
   // BASS
-  let imgBass
-  let mapBass
+  let imgBass;
+  let mapBass;
   if (isMobile()) {
     imgBass = githubToJsDelivr(
-      'https://github.com/illysito/shaders/blob/ea274274000130190655b1c43173fe28fd503712/static/DerivaMainTextureBassMobile.jpg'
-    )
+      "https://github.com/illysito/shaders/blob/ea274274000130190655b1c43173fe28fd503712/static/DerivaMainTextureBassMobile.jpg"
+    );
     mapBass = githubToJsDelivr(
-      'https://github.com/illysito/shaders/blob/ea274274000130190655b1c43173fe28fd503712/static/DerivaMainNoiseMapMobile.jpg'
-    )
+      "https://github.com/illysito/shaders/blob/ea274274000130190655b1c43173fe28fd503712/static/DerivaMainNoiseMapMobile.jpg"
+    );
   } else {
     imgBass = githubToJsDelivr(
-      'https://github.com/illysito/shaders/blob/3058a4cf5a49ad2bbef6840fa5a0c0b16aeb13ab/static/DerivaMainTextureBass.jpg'
-    )
+      "https://github.com/illysito/shaders/blob/3058a4cf5a49ad2bbef6840fa5a0c0b16aeb13ab/static/DerivaMainTextureBass.jpg"
+    );
     mapBass = githubToJsDelivr(
-      'https://github.com/illysito/shaders/blob/07b9024784cc5447749e23cbc6742efcc7ff92d9/static/DerivaMainNoiseMap.jpg'
-    )
+      "https://github.com/illysito/shaders/blob/07b9024784cc5447749e23cbc6742efcc7ff92d9/static/DerivaMainNoiseMap.jpg"
+    );
   }
 
   // POSTERS
@@ -96,26 +96,26 @@ function canvas() {
   //
   // Canvas
   //
-  const canvas = document.querySelector('#webgl')
-  const vh = screen.height
-  canvas.style.height = `${vh}px`
+  const canvas = document.querySelector("#webgl");
+  const vh = screen.height;
+  canvas.style.height = `${vh}px`;
 
   //
   // Scene
   //
-  const scene = new THREE.Scene()
-  scene.background = new THREE.Color(0xfffbf6)
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xfffbf6);
 
   //
   // Textures
   //
-  const textureLoader = new THREE.TextureLoader()
-  const imgTexture = textureLoader.load(imgBass)
-  const imgTexture2 = textureLoader.load(imgLuis)
-  const distortionTexture = textureLoader.load(mapBass)
-  const distortionTexture2 = textureLoader.load(mapLuis)
-  const perlinTexture = textureLoader.load(perlinNoise)
-  const background = textureLoader.load(bg)
+  const textureLoader = new THREE.TextureLoader();
+  const imgTexture = textureLoader.load(imgBass);
+  const imgTexture2 = textureLoader.load(imgLuis);
+  const distortionTexture = textureLoader.load(mapBass);
+  const distortionTexture2 = textureLoader.load(mapLuis);
+  const perlinTexture = textureLoader.load(perlinNoise);
+  const background = textureLoader.load(bg);
   // imgTexture.colorSpace = THREE.SRGBColorSpace;
   // const firstImpulse = textureLoader.load(firstImpulsePoster)
   // const anaAyala = textureLoader.load(anaAyalaPoster)
@@ -136,60 +136,60 @@ function canvas() {
   //
   // Camera
   //
-  const fov = 60 // quite a lot, usually less!
+  const fov = 60; // quite a lot, usually less!
   const sizes = {
     // usually canvas aspect
     width: canvas.clientWidth,
     height: canvas.clientHeight,
-  }
-  let aspect = sizes.width / sizes.height
-  const camera = new THREE.PerspectiveCamera(fov, aspect, 0.1, 100) // (fov, aspect, near, far)
-  camera.position.set(0, 0, 3)
-  scene.add(camera)
+  };
+  let aspect = sizes.width / sizes.height;
+  const camera = new THREE.PerspectiveCamera(fov, aspect, 0.1, 100); // (fov, aspect, near, far)
+  camera.position.set(0, 0, 3);
+  scene.add(camera);
 
   //
   // Resize
   //
-  let resizeTimeout
+  let resizeTimeout;
   const resizeObserver = new ResizeObserver(() => {
     // Debounce to avoid flickering
-    clearTimeout(resizeTimeout)
+    clearTimeout(resizeTimeout);
 
     resizeTimeout = setTimeout(() => {
       // change sizes
-      const w = canvas.clientWidth
-      const h = canvas.clientHeight
-      sizes.width = w
-      sizes.height = h
+      const w = canvas.clientWidth;
+      const h = canvas.clientHeight;
+      sizes.width = w;
+      sizes.height = h;
 
       // update camera
-      camera.aspect = w / h
-      camera.updateProjectionMatrix()
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
 
       // upadte renderer
-      renderer.setSize(w, h, false)
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-    }, 10)
-  })
-  resizeObserver.observe(canvas)
+      renderer.setSize(w, h, false);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    }, 10);
+  });
+  resizeObserver.observe(canvas);
 
   //
   // Objects
   //
   // const planeGeo = new THREE.PlaneGeometry(1, 1, 1, 1);
-  let computedOffset = 0.0
-  let scrollLimit = 0
+  let computedOffset = 0.0;
+  let scrollLimit = 0;
   if (isMobile()) {
-    scrollLimit = 1200
+    scrollLimit = 1200;
   } else {
-    scrollLimit = 600
+    scrollLimit = 600;
   }
-  let swt = 0.0
-  let planeGeo
+  let swt = 0.0;
+  let planeGeo;
   if (isMobile()) {
-    planeGeo = new THREE.PlaneGeometry(3, 4, 1, 1)
+    planeGeo = new THREE.PlaneGeometry(3, 4, 1, 1);
   } else {
-    planeGeo = new THREE.PlaneGeometry(16, 9, 1, 1)
+    planeGeo = new THREE.PlaneGeometry(16, 9, 1, 1);
   }
 
   const material = new THREE.ShaderMaterial({
@@ -341,24 +341,24 @@ function canvas() {
       // gl_FragColor = vec4(finalColor, 1.0);
     }
   `,
-  })
+  });
   // const material = new THREE.MeshBasicMaterial({
   //   map: imgTexture,
   //   // wireframe: true,
   // });
 
-  const plane = new THREE.Mesh(planeGeo, material)
-  let planeScale = 0.4
-  plane.position.y = 0.2
-  plane.position.x = -0.15
+  const plane = new THREE.Mesh(planeGeo, material);
+  let planeScale = 0.4;
+  plane.position.y = 0.2;
+  plane.position.x = -0.15;
   if (isMobile()) {
-    planeScale = 0.86
-    plane.position.y = 0.44
-    plane.position.x = 0
+    planeScale = 0.86;
+    plane.position.y = 0.2;
+    plane.position.x = 0;
   }
 
-  plane.scale.set(planeScale, planeScale, planeScale)
-  scene.add(plane)
+  plane.scale.set(planeScale, planeScale, planeScale);
+  scene.add(plane);
 
   // let imgPlaneScale = 0.4
   // let posterOffset = 1.0
@@ -506,9 +506,9 @@ function canvas() {
   const renderer = new THREE.WebGLRenderer({
     canvas: canvas,
     // alpha: true,
-  })
-  renderer.setSize(sizes.width, sizes.height, false) // false meaning NOT OVERRIDE styles (CSS)
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+  });
+  renderer.setSize(sizes.width, sizes.height, false); // false meaning NOT OVERRIDE styles (CSS)
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
   // ------------------------------- animate & render!
 
@@ -531,18 +531,19 @@ function canvas() {
   // })
 
   // SCROLL
-  let raisePlane = false
-  window.addEventListener('scroll', () => {
-    const scroll = window.scrollY
-    const maxScroll = document.documentElement.scrollHeight - window.innerHeight
+  let raisePlane = false;
+  window.addEventListener("scroll", () => {
+    const scroll = window.scrollY;
+    const maxScroll =
+      document.documentElement.scrollHeight - window.innerHeight;
 
     if (scroll > 800) {
-      raisePlane = true
+      raisePlane = true;
     }
 
     // Fade in from 0 → 1 for the first 450px
-    let fadeIn = gsap.utils.mapRange(0, scrollLimit, 0, 1, scroll)
-    fadeIn = Math.min(fadeIn, 1)
+    let fadeIn = gsap.utils.mapRange(0, scrollLimit, 0, 1, scroll);
+    fadeIn = Math.min(fadeIn, 1);
 
     // Fade out from 1 → 0 as user approaches the bottom
     let fadeOut = gsap.utils.mapRange(
@@ -551,43 +552,43 @@ function canvas() {
       1,
       0,
       scroll
-    )
-    fadeOut = Math.max(Math.min(fadeOut, 1), 0)
+    );
+    fadeOut = Math.max(Math.min(fadeOut, 1), 0);
 
     // Choose which applies
-    computedOffset = scroll < scrollLimit ? fadeIn : fadeOut
+    computedOffset = scroll < scrollLimit ? fadeIn : fadeOut;
 
     // Swap textures
     if (scroll > scrollLimit) {
-      swt = 1.0
+      swt = 1.0;
     } else {
-      swt = 0.0
+      swt = 0.0;
     }
-  })
+  });
 
-  const clock = new THREE.Clock()
+  const clock = new THREE.Clock();
   function tick() {
     // Clock
-    const t = clock.getElapsedTime()
+    const t = clock.getElapsedTime();
 
     // UNIFORMS
     // imgMaterial.uniforms.uTime.value = t
     // imgMaterial.uniforms.uIndex.value = posterIndex
-    material.uniforms.uTime.value = t
-    material.uniforms.uOffset.value = computedOffset
-    material.uniforms.uSw.value = swt
+    material.uniforms.uTime.value = t;
+    material.uniforms.uOffset.value = computedOffset;
+    material.uniforms.uSw.value = swt;
 
     if (isMobile() && raisePlane) {
-      plane.position.y = 0.24
+      plane.position.y = 0.24;
     } else if (isMobile() && !raisePlane) {
-      plane.position.y = 0.12
+      plane.position.y = 0.12;
     }
 
     // Render
-    requestAnimationFrame(tick)
-    renderer.render(scene, camera)
+    requestAnimationFrame(tick);
+    renderer.render(scene, camera);
   }
-  tick()
+  tick();
 }
 
-export default canvas
+export default canvas;
