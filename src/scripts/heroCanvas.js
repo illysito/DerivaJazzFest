@@ -104,7 +104,7 @@ function canvas() {
   // Scene
   //
   const scene = new THREE.Scene()
-  // scene.background = new THREE.Color(0xffffff);
+  scene.background = new THREE.Color(0xfffbf6)
 
   //
   // Textures
@@ -352,8 +352,8 @@ function canvas() {
   plane.position.y = 0.2
   plane.position.x = -0.15
   if (isMobile()) {
-    planeScale = 0.9
-    plane.position.y = 0.12
+    planeScale = 0.86
+    plane.position.y = 0.44
     plane.position.x = 0
   }
 
